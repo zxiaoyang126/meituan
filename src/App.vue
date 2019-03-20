@@ -19,6 +19,23 @@ export default {
 </script>
 
 <style>
+
+  .clearfix::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+  }
+      
+  .clearfix::before {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+  }
+     
   html {
     width: 100%;
     height: 100%;

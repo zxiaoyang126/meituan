@@ -8,132 +8,28 @@
                 <!-- 左侧分类区别 -->
                 <div class="main-left">
                     <h1>全部分类</h1>
-                    <ul @mouseenter="showNavDetail" @mouseleave="hideNavDetail">
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>外卖</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>酒店<span>HOT</span></a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
-                            <i class="el-icon-arrow-right" style="font-size: 10px"></i>
-                        </li>
-                        <li>
-                            <i class="el-icon-tickets"></i>
-                            <a>美食</a>
+                    <ul>
+                        <li class="nav-item" 
+                            v-for="item in navItemList" 
+                            :key="item.typeId"
+                            @mouseenter="showNavDetail(item.children)"
+                            @mouseleave="hideNavDetail">        
+                            <i :class="item.icon"></i>
+                            <a>{{item.text}}<span v-if="item.isHot">HOT</span></a>
                             <i class="el-icon-arrow-right" style="font-size: 10px"></i>
                         </li>
                     </ul>
 
-                    <div class="nav-detail-wrap" v-if="isShowNavDetail" @mouseenter="showNavDetail" @mouseleave="hideNavDetail">
-                        <div class="nav-detail-content">
-                            <div class="detail-content-item">
-                                <h2 class="item-title clearfix">运动健身<span>更多</span></h2>
-                                <div class="item-box">
-                                    <a href="#">健身中心</a>
-                                    <a href="#">武术场馆</a>
-                                    <a href="#">游泳馆</a>
-                                    <a href="#">羽毛球馆</a>
-                                    <a href="#">溜冰场</a>
-                                    <a href="#">射箭馆</a>
-                                    <a href="#">篮球场</a>
-                                    <a href="#">网球馆</a>
-                                    <a href="#">台球馆</a>
-                                    <a href="#">乒乓球</a>
-                                </div>
-                            </div>
+                    <div class="nav-detail-wrap" 
+                         v-if="navDetailData" 
+                         @mouseenter="showNavDetail(null)" 
+                         @mouseleave="hideNavDetail">
 
-                            <div class="detail-content-item">
-                                <h2 class="item-title">运动健身<span>更多</span></h2>
-                                <div class="item-box">
-                                    <a href="#">健身中心</a>
-                                    <a href="#">武术场馆</a>
-                                    <a href="#">游泳馆</a>
-                                    <a href="#">羽毛球馆</a>
-                                    <a href="#">溜冰场</a>
-                                    <a href="#">射箭馆</a>
-                                    <a href="#">篮球场</a>
-                                    <a href="#">网球馆</a>
-                                    <a href="#">台球馆</a>
-                                    <a href="#">乒乓球</a>
-                                </div>
-                            </div>
+                        <div class="nav-detail-content">
+                            <nav-item-detail v-for="(item, index) in navDetailData" 
+                                             :key="index"
+                                             :subtitle="item.subtitle"
+                                             :childrenList="item.list"/>
                         </div>
                     </div>
 
@@ -169,7 +65,8 @@
                         
                         <!-- 登陆注册区域 -->
                         <div class="login-register">
-
+                            
+                            <!-- 未登陆 请登陆 -->
                             <div class="login">
                                 <img src="http://s0.meituan.net/bs/fe-web-meituan/2d05c2b/img/avatar.jpg" alt="">
                                 <p>Hi！你好</p>
@@ -177,6 +74,7 @@
                                 <a href="#">立即登陆</a>
                             </div>
 
+                            <!-- 已登陆 个人中心 -->
                             <div class="register" style="display:none"></div>
 
                         </div>
@@ -222,39 +120,185 @@
             <br />           
             <br />           
             <br />           
+            <br />   
+            <mt-nav />   
             <br />           
+            <br />           
+            <br />           
+            <br />           
+            <br />           
+            <br />           
+            <br />           
+            <br />        
 
         </div>
     </div>
 </template>
 <script>
 import NavItem from '../components/NavItem'
+import NavItemDetail from '../components/NavItemDetail'
+import MtNav from './MtNav'
 import HomePanel from '../components/HomePanel'
 
 export default {
 
     data() {
         return {
-            isShowNavDetail: false,
-            navDetailData: [],
-            timer: null
+            navDetailData: null,
+            timer: null,
+            navItemList: [                    
+                    {
+                        icon: 'el-icon-view',
+                        text: '美食',
+                        typeId: 1,
+                        children: [                        
+                            {                            
+                                subtitle: '美食',
+                                list: ['代金券', '甜点饮品', '火锅', '自助餐', '小吃快餐', 
+                                        '日韩料理', '西餐', '聚餐宴请', '烧烤烤肉', '东北菜', 
+                                        '川湘菜', '江浙菜', '香锅烤鱼', '粤港菜', '中式烧烤/烤串', 
+                                        '西北菜', '咖啡酒吧茶馆', '云贵菜', '东南亚菜', '海鲜素食']
+                            }
+                        ]
+                    },
+                    {
+                        icon: 'el-icon-tickets',
+                        text: '外卖',
+                        typeId: 2,
+                        children: [{
+                            subtitle: '外卖',
+                            list: ['美团外卖']
+                        }]
+                        
+                    },
+                    {
+                        icon: 'el-icon-mobile-phone',
+                        text: '酒店',
+                        isHot: true,
+                        typeId: 3,
+                        children: [{                            
+                            subtitle: '酒店星级',
+                            list: ['经济型', '舒适/三星', '高档/四星', '豪华/五星']
+                        }]
+                    },
+                    {
+                        icon: 'el-icon-info',
+                        text: '榛果民宿',
+                        typeId: 4,
+                        children: [{                            
+                            subtitle: '热门城市',
+                            list: ['上海', '成都', '北京', '重庆', '南京', '杭州', '广州', '西安', '大连']
+                        }]
+                    },
+                    {
+                        icon: 'el-icon-edit-outline',
+                        text: '猫眼电影',
+                        typeId: 5,
+                        children: [                        
+                            {                            
+                                subtitle: '热映电影',
+                                list: ['比悲伤更悲伤的故事', '惊奇队长', '绿皮书', '狂暴凶狮', '老师·好', 
+                                        '波西米亚狂想曲', '乐高大电影2', '地久天长', '我的英雄学院：两位英雄', 
+                                        '阿丽塔：战斗天使']
+                            },
+                            {                            
+                                subtitle: '热门影院',
+                                list: ['SFC上影影城', '万达影城', '大地影院', '百丽宫影城', '星美国际影城', 
+                                        '橙天嘉禾影城', '横店电影城', 'CGV影城', '大光明电影院', '金逸影城']
+                            }
+                        ]
+                    },
+                    {
+                        icon: 'el-icon-goods',
+                        text: '机票 / 火车票',
+                        typeId: 6,
+                        children: [                        
+                            { subtitle: '机票', list: ['国内机票', '国际/港澳台机票'] },
+                            { subtitle: '火车票', list: ['火车票'] }
+                        ]
+                    },
+                    {
+                        icon: 'el-icon-share',
+                        text: '休闲娱乐 / KTV',
+                        typeId: 7,
+                        children: [                        
+                            {                            
+                                subtitle: '休闲娱乐',
+                                list: ['足疗按摩', '洗浴/汗蒸', '酒吧', '密室逃脱', '轰趴馆', 
+                                        '茶馆', '私人影院', 'DIY手工坊', '采摘/农家乐', 
+                                        '网吧网咖', '真人CS', '棋牌室', '其他玩乐']
+                            },
+                            { subtitle: 'KTV', list: ['KTV'] }
+                        ]
+                    },
+                    {
+                        icon: 'el-icon-setting',
+                        text: '生活服务',
+                        typeId: 8
+                    },
+                    {
+                        icon: 'el-icon-view',
+                        text: '丽人 / 美发 / 医学美容',
+                        typeId: 9
+                    },
+                    {
+                        icon: 'el-icon-tickets',
+                        text: '结婚 / 婚纱摄影 / 婚宴',
+                        typeId: 10
+                    },
+                    {
+                        icon: 'el-icon-mobile-phone',
+                        text: '亲子 / 儿童乐园 / 幼教',
+                        typeId: 11     
+                    },
+                    {
+                        icon: 'el-icon-info',
+                        text: '运动健身 / 健身中心',
+                        typeId: 12
+                    },
+                    {
+                        icon: 'el-icon-edit-outline',
+                        text: '家装 / 建材 / 家居',
+                        typeId: 13
+                    },
+                    {
+                        icon: 'el-icon-goods',
+                        text: '学习培训 / 音乐培训',
+                        typeId: 14
+                    },
+                    {
+                        icon: 'el-icon-share',
+                        text: '医疗健康 / 宠物 / 爱车',
+                        typeId: 15
+                    },
+                    {
+                        icon: 'el-icon-setting',
+                        text: '酒吧 / 密室逃脱',
+                        typeId: 16
+                    }
+            ]
         }
     },
     methods: {
-        showNavDetail(e) {
-            clearTimeout(this.timer)  
-            this.isShowNavDetail = true;           
+        showNavDetail(navDetailData) {
+            clearTimeout(this.timer);
+            console.log(navDetailData)          
+            if(navDetailData) {
+                this.navDetailData = navDetailData;
+            }
         },
         hideNavDetail() {            
             clearTimeout(this.timer)            
             this.timer = setTimeout(() => {                
-                this.isShowNavDetail = false;
+                this.navDetailData = null;
             }, 100)
         }
     },
     components: {
         NavItem,
-        HomePanel
+        HomePanel,
+        MtNav,
+        NavItemDetail
     }
     
 }
@@ -307,12 +351,12 @@ export default {
                         flex-direction column
                         height 425px
                         box-sizing border-box
-                        li 
+                        .nav-item 
                             padding:2px 12px
                             flex 1
                             color #ffffff    
                             display flex
-                            align-items center           
+                            align-items center
                             i:nth-of-type(1)
                                 margin-right 8px
                                 color rgba(255, 255, 255, .3)     
@@ -346,49 +390,7 @@ export default {
                         left 230px
                         z-index 999
                         .nav-detail-content 
-                            padding 0px 30px
-                            .detail-content-item 
-                                margin-top 24px
-                                width 100%
-                                .item-title
-                                    font-size 15px
-                                    font-weight 500
-                                    color #666
-                                    background #fff
-                                    line-height 22px
-                                    height 22px
-                                    padding-bottom 10px
-                                    span
-                                        font-size 12px
-                                        color #999
-                                        cursor pointer
-                                        font-weight 400
-                                        float right
-                                        margin-right 6px
-                                        position relative 
-                                        &::after 
-                                            content ""
-                                            height 4px 
-                                            width 4px
-                                            transform rotate(-45deg) 
-                                            position absolute
-                                            border-right 1px solid #999
-                                            border-bottom 1px solid #999
-                                            top 0
-                                            bottom 0px
-                                            margin auto                                            
-                                .item-box 
-                                    width 100%
-                                    border-top 1px solid #e5e5e5
-                                    padding-top 5px                                   
-                                    font-size 0px
-                                    a 
-                                        margin-right 16px
-                                        line-height 22px
-                                        display inline-block
-                                        font-size 12px
-                                        &:hover 
-                                            color $hover-color
+                            padding 0px 30px                         
 
 
                 .main-right 
