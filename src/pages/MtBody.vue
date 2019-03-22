@@ -112,6 +112,7 @@
 
             <!-- 第二屏分类区域 -->
             <home-panel /> 
+            <movie-panel />
 
             <br />           
             <br />           
@@ -121,15 +122,9 @@
             <br />           
             <br />           
             <br />   
-            <mt-nav />   
-            <br />           
-            <br />           
-            <br />           
-            <br />           
-            <br />           
-            <br />           
-            <br />           
-            <br />        
+            <mt-nav /> 
+            <mt-bottom />  
+            
 
         </div>
     </div>
@@ -138,7 +133,9 @@
 import NavItem from '../components/NavItem'
 import NavItemDetail from '../components/NavItemDetail'
 import MtNav from './MtNav'
+import MtBottom from './MtBottom'
 import HomePanel from '../components/HomePanel'
+import MoviePanel from '../components/MoviePanel'
 
 export default {
 
@@ -234,47 +231,116 @@ export default {
                     {
                         icon: 'el-icon-setting',
                         text: '生活服务',
-                        typeId: 8
+                        typeId: 8,
+                        children: [{                            
+                            subtitle: '生活服务',
+                            list: ['衣物/皮具洗护', '家政', '搬家运输', '送水', '充值缴费', '照片冲印/图文文印', 
+                                    '服饰/鞋包养护', '开锁换锁', '居家维修', '管道疏通', '商务服务/法律服务',
+                                    '家电维修清洗', '电脑维修', '手机维修', '证件照/肖像摄影', '成人用品/情趣用品']
+                        }]
                     },
                     {
                         icon: 'el-icon-view',
                         text: '丽人 / 美发 / 医学美容',
-                        typeId: 9
+                        typeId: 9,
+                        children: [{                            
+                            subtitle: '丽人',
+                            list: ['美发', '美甲美睫', '美容美体', '医学美容', '瑜伽舞蹈', '瘦身纤体', 
+                                    '韩式定妆', '祛痘', '纹身', '化妆品', '养发']
+                        }]
                     },
                     {
                         icon: 'el-icon-tickets',
                         text: '结婚 / 婚纱摄影 / 婚宴',
-                        typeId: 10
+                        typeId: 10,
+                        children: [{                            
+                            subtitle: '结婚',
+                            list: ['婚纱摄影', '旅拍', '个性写真', '婚宴', '婚庆公司', '婚纱礼服', '彩妆造型',
+                                    '西服定制', '婚戒首饰', '婚车租赁', '司仪主持', '婚礼小礼品', '婚礼跟拍', '更多婚礼服务']
+                        }]
                     },
                     {
                         icon: 'el-icon-mobile-phone',
                         text: '亲子 / 儿童乐园 / 幼教',
-                        typeId: 11     
+                        typeId: 11,
+                        children: [                        
+                            {                            
+                                subtitle: '儿童乐园',
+                                list: ['婴儿游泳', '其它亲子游乐']
+                            },
+                            {                            
+                                subtitle: '幼儿教育',
+                                list: ['早教中心', '少儿英语', '智力开发', '托班/幼儿园', '幼儿教育']
+                            },
+                            {                            
+                                subtitle: '亲子摄影',
+                                list: ['儿童摄影', '孕妇写真', '上门拍', '其他亲子摄影']
+                            },
+                            {                            
+                                subtitle: '孕产护理',
+                                list: ['月子会所', '产后恢复', '妇幼医院', '孕产用品', '开奶催乳', 
+                                        '月嫂', '亲子购物', '宝宝派对', '亲子服务']
+                            }
+                        ]     
                     },
                     {
                         icon: 'el-icon-info',
                         text: '运动健身 / 健身中心',
-                        typeId: 12
+                        typeId: 12,
+                        children: [                        
+                            { subtitle: '机票', list: ['国内机票', '国际/港澳台机票'] },
+                            { subtitle: '火车票', list: ['火车票'] }
+                        ]
                     },
                     {
                         icon: 'el-icon-edit-outline',
                         text: '家装 / 建材 / 家居',
-                        typeId: 13
+                        typeId: 13,
+                        children: [{                            
+                            subtitle: '热门城市',
+                            list: ['上海', '成都', '北京', '重庆', '南京', '杭州', '广州', '西安', '大连']
+                        }]
                     },
                     {
                         icon: 'el-icon-goods',
                         text: '学习培训 / 音乐培训',
-                        typeId: 14
+                        typeId: 14,
+                        children: [{                            
+                            subtitle: '生活服务',
+                            list: ['衣物/皮具洗护', '家政', '搬家运输', '送水', '充值缴费', '照片冲印/图文文印', 
+                                    '服饰/鞋包养护', '开锁换锁', '居家维修', '管道疏通', '商务服务/法律服务',
+                                    '家电维修清洗', '电脑维修', '手机维修', '证件照/肖像摄影', '成人用品/情趣用品']
+                        }]
                     },
                     {
                         icon: 'el-icon-share',
                         text: '医疗健康 / 宠物 / 爱车',
-                        typeId: 15
+                        typeId: 15,
+                        children: [                        
+                            {                            
+                                subtitle: '儿童乐园',
+                                list: ['婴儿游泳', '其它亲子游乐']
+                            },
+                            {                            
+                                subtitle: '幼儿教育',
+                                list: ['早教中心', '少儿英语', '智力开发', '托班/幼儿园', '幼儿教育']
+                            },
+                            {                            
+                                subtitle: '亲子摄影',
+                                list: ['儿童摄影', '孕妇写真', '上门拍', '其他亲子摄影']
+                            }
+                        ]     
                     },
                     {
                         icon: 'el-icon-setting',
                         text: '酒吧 / 密室逃脱',
-                        typeId: 16
+                        typeId: 16,
+                        children: [{                            
+                                subtitle: '休闲娱乐',
+                                list: ['足疗按摩', '洗浴/汗蒸', '酒吧', '密室逃脱', '轰趴馆', 
+                                        '茶馆', '私人影院', 'DIY手工坊', '采摘/农家乐', 
+                                        '网吧网咖', '真人CS', '棋牌室', '其他玩乐']
+                            }]
                     }
             ]
         }
@@ -282,7 +348,6 @@ export default {
     methods: {
         showNavDetail(navDetailData) {
             clearTimeout(this.timer);
-            console.log(navDetailData)          
             if(navDetailData) {
                 this.navDetailData = navDetailData;
             }
@@ -298,7 +363,9 @@ export default {
         NavItem,
         HomePanel,
         MtNav,
-        NavItemDetail
+        NavItemDetail,
+        MtBottom,
+        MoviePanel
     }
     
 }

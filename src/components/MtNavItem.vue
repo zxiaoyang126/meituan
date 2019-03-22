@@ -1,27 +1,8 @@
 <template>
     <div class="nav-content clearfix">
-        <span class="sub-title">热门城市</span>
-        <div class="sub-content">
-            <a href="">哈尔滨</a>
-            <a href="">长沙</a>
-            <a href="">长春</a>
-            <a href="">上海</a>
-            <a href="">哈尔滨</a>
-            <a href="">长沙</a>
-            <a href="">长春</a>
-            <a href="">上海</a>
-            <a href="">哈尔滨</a>
-            <a href="">长沙</a>
-            <a href="">长春</a>
-            <a href="">上海</a>
-            <a href="">哈尔滨</a>
-            <a href="">长沙</a>
-            <a href="">长春</a>
-            <a href="">上海</a>
-            <a href="">哈尔滨</a>
-            <a href="">长沙</a>
-            <a href="">长春</a>
-            <a href="">上海</a>
+        <span class="sub-title">{{subtitle}}</span>
+        <div class="sub-content" :style="bottomBorder">
+            <a href="" v-for="(item, index) in items" :key="index">{{item}}</a>            
         </div>
     </div>
 </template>
@@ -29,6 +10,24 @@
 
 <script>
 export default {
+
+    props: {
+        subtitle: {
+            type: String
+        },
+        items: {
+            type: Array
+        }
+    },
+    computed: {
+        bottomBorder() {
+            if( this.subtitle === '周边热门' ) {
+                return {
+                    border: 'none'
+                }
+            }
+        }
+    }
     
 }
 </script>
@@ -37,7 +36,7 @@ export default {
 <style lang="stylus" scoped>
     .nav-content            
         .sub-title
-            width 100px
+            width 98px
             text-align center
             padding 10px 0
             font-size 14px
@@ -52,6 +51,8 @@ export default {
             a
                 float left
                 width 100px
-                margin-right 10px
                 margin-bottom 10px
+                font-size 12px
+                &:hover
+                    color #31BBAC
 </style>

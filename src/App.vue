@@ -3,22 +3,31 @@
     <mt-header />
     <router-view></router-view>
     <div class="page-nav"></div>
-    <div class="page-footer"></div>
+    
+
+    <mt-footer />
   </div>
 </template>
 
 <script>
-import MtHeader from "./pages/MtHeader";
+import MtHeader from "./pages/MtHeader"
+import MtFooter from './pages/MtFooter'
 
 export default {
   name: "App",
   components: {
-    MtHeader
+    MtHeader,
+    MtFooter
   }
 };
 </script>
 
 <style>
+
+  #app {
+    width: 1190px;
+    margin: 0px auto;
+  }
 
   .clearfix::after {
     content: " ";
