@@ -71,7 +71,7 @@
                                 <img src="http://s0.meituan.net/bs/fe-web-meituan/2d05c2b/img/avatar.jpg" alt="">
                                 <p>Hi！你好</p>
                                 <a href="#">注册</a>
-                                <a href="#">立即登陆</a>
+                                <router-link to="/login">立即登陆</router-link>
                             </div>
 
                             <!-- 已登陆 个人中心 -->
@@ -122,18 +122,16 @@
             <br />           
             <br />           
             <br />   
-            <mt-nav /> 
-            <mt-bottom />  
-            
+            <mt-nav />
 
         </div>
     </div>
 </template>
 <script>
+
+import MtNav from './MtNav'
 import NavItem from '../components/NavItem'
 import NavItemDetail from '../components/NavItemDetail'
-import MtNav from './MtNav'
-import MtBottom from './MtBottom'
 import HomePanel from '../components/HomePanel'
 import MoviePanel from '../components/MoviePanel'
 
@@ -364,7 +362,6 @@ export default {
         HomePanel,
         MtNav,
         NavItemDetail,
-        MtBottom,
         MoviePanel
     }
     
@@ -375,19 +372,6 @@ export default {
 <style lang="stylus" scoped>
 
     $hover-color = #31BBAC
-    .clearfix::after 
-        content " "
-        display block
-        height 0
-        visibility hidden
-        clear both
-    .clearfix::before 
-        content " "
-        display block
-        height 0
-        visibility hidden
-        clear both
-
 
     .body-wrap 
         width 100%

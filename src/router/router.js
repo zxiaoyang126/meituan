@@ -4,28 +4,41 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 
-
+import Home from '../pages/Home'
 import MtBody from '../pages/MtBody'
 import ChangeCity from '../pages/ChangeCity'
 import Search from '../pages/Search'
+import Login from '../pages/Login'
+
+
 
 export default new VueRouter({
 
     routes: [
         {
             path: '/',
-            name: 'mt-body',
-            component: MtBody
+            component: Home,
+            children: [
+                {
+                    path: 'home',
+                    component: MtBody
+                },
+                {
+                    path: 'changecity',
+                    name: 'changecity',
+                    component: ChangeCity
+                }
+            ],
+            redirect: '/home'
         },
-        {
-            path:'/changecity',
-            name: 'changecity',
-            component: ChangeCity
-        },
+       
         {
             path: '/s',
-            name: 'search',
             component: Search
+        },
+        {
+            path: '/login',
+            component: Login
         }
     ],
     mode: 'history'

@@ -41,7 +41,8 @@ export default {
 
 <style lang="stylus" scoped>
     .mt-footer-wrap
-        width 100%
+        width 1190px
+        margin 0px auto
         overflow hidden
         padding 20px 0px 30px
         p 

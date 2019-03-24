@@ -118,7 +118,8 @@ export default {
 <style lang="stylus" scoped>
 
     .mt-bottom 
-        width 100%
+        width 1190px
+        margin 0px auto
         border-top 1px solid #d8d8d8
         border-bottom 1px solid #d8d8d8
         padding 40px

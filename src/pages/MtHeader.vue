@@ -8,7 +8,7 @@
                     <router-link class="change-city" :to="{name: 'changecity'}">切换城市</router-link>
                     <span class="near-city">[ <a href="#">彰化</a> <a href="#">宜兰</a> <a href="#">太仓</a> ]</span>
 
-                    <a href="#" class="login">立即登陆</a>
+                    <router-link to="/login" class="login">立即登陆</router-link>
                     <a href="#">注册</a>
                 </div>
                 <div class="bar-right">
@@ -100,7 +100,7 @@
         <div class="header-content clearfix">
 
             <div class="logo">
-                <a href="#"><img src="http://s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png" alt=""></a>
+                <router-link to="/home"><img src="http://s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png" alt=""></router-link>
             </div>
 
             <div class="search">
@@ -330,7 +330,8 @@ export default {
                         box-sizing border-box
                         outline none 
                         border 1px solid #13D1BE
-                        line-height 38px                       
+                        line-height 40px
+                        height 40px                    
                         border-top-left-radius 4px
                         border-bottom-left-radius 5px
                     .search-btn 
