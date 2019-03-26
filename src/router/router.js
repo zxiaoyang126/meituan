@@ -9,6 +9,7 @@ import MtBody from '../pages/MtBody'
 import ChangeCity from '../pages/ChangeCity'
 import Search from '../pages/Search'
 import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 
 
@@ -39,6 +40,10 @@ export default new VueRouter({
         {
             path: '/login',
             component: Login
+        },
+        {
+            path: '/register',
+            component: Register
         }
     ],
     mode: 'history'

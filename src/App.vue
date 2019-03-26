@@ -22,7 +22,10 @@ export default {
 <style>
   @import url('./assets/reset.css');
 
-  
+  #app {
+    width: 100%;
+    height: 100%;
+  }
 
   .clearfix::after {
     content: " ";

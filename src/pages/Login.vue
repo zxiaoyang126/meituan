@@ -73,7 +73,7 @@
                     <!-- 手机登陆动态码登陆时显示 -->
                     <p class="tip" v-if="isPhoneLogin">提示： 未注册美团账号的手机号，登录时将自动注册美团账号，且代表您已同意<a href="#">《美团网用户协议》</a></p>
                     <!-- 账号登陆时显示 -->
-                    <p class="no-user" v-else>还没有账号？<a href="#">免费注册</a></p>
+                    <p class="no-user" v-else>还没有账号？<router-link to="/register">免费注册</router-link></p>
 
                     <div class="other-login">
                         <div class="other-login-content">
@@ -109,7 +109,7 @@
 export default {
     data() {
         return {
-            isPhoneLogin: true,
+            isPhoneLogin: false,
             errMsg: ''
         }
     },

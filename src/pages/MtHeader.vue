@@ -119,11 +119,11 @@
                     </dl>
 
                     <ul v-else>
-                        <li>asdfsdf</li>
-                        <li>asdfsdf</li>
-                        <li>asdfsdf</li>
-                        <li>asdfsdf</li>
-                        <li>asdfsdf</li>
+                        <li>从服务器获取数据</li>
+                        <li>从服务器获取数据</li>
+                        <li>从服务器获取数据</li>
+                        <li>从服务器获取数据</li>
+                        <li>从服务器获取数据</li>
                     </ul>
 
                 </div>

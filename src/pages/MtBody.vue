@@ -70,7 +70,7 @@
                             <div class="login">
                                 <img src="http://s0.meituan.net/bs/fe-web-meituan/2d05c2b/img/avatar.jpg" alt="">
                                 <p>Hi！你好</p>
-                                <a href="#">注册</a>
+                                <router-link to="/register">注册</router-link>
                                 <router-link to="/login">立即登陆</router-link>
                             </div>
 
