@@ -5,16 +5,8 @@
         <a class="all"><span>全部</span></a>
 
         <div class="all-classify">
-            <ul class="clearfix">
-                <li>美食</li>
-                <li>酒店住宿</li>
-                <li>周边游</li>
-                <li>休闲娱乐</li>
-                <li>生活服务</li>
-                <li>时尚购</li>
-                <li>旅游</li>         
-                <li>丽人</li>         
-                <li>汽车服务</li>         
+            <ul>
+                <li v-for="item in classifyList" :key="item">{{item}}</li>                
                 <li class="no-triangle">榛果民宿</li>         
             </ul>
         </div>
@@ -25,6 +17,14 @@
 
 <script>
 export default {
+    data() {
+        return {
+            classifyList: ['美食', '酒店住宿', '周边游', '休闲娱乐', '生活服务', '宴会', '时尚购',
+                '旅游', '丽人', '运动健身', '母婴亲子', '宠物', '汽车服务', '摄影写真', '学习培训',
+                '交通枢纽', '家装', '医疗', '结婚'
+            ]
+        }
+    }
     
 }
 </script>
@@ -47,7 +47,7 @@ export default {
             float left
         .classify
             color #333
-        .all 
+        .all
             span 
                 display inline-block
                 padding 0px 10px
@@ -60,12 +60,16 @@ export default {
             padding-bottom 10px
             ul 
                 width 100%
+                overflow hidden                
                 li 
                     float left
                     line-height 22px
+                    width 16.6%
                     height 22px
                     font-size 14px
                     padding 0px 10px
+                    margin-bottom 8px
+                    box-sizing border-box
                     &::after 
                         content ''
                         display inline-block

@@ -27,6 +27,10 @@ export default {
     height: 100%;
   }
 
+  a {
+    cursor: pointer;
+  }
+
   .clearfix::after {
     content: " ";
     display: block;

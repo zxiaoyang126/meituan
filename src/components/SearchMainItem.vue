@@ -6,7 +6,7 @@
 
         <div class="item-desc">
             <div class="item-desc-top">
-                <h2>上海迪士尼度假区</h2>
+                <h2>{{title}}</h2>
                 <p>
                     <el-rate
                         v-model="value5"
@@ -39,6 +39,11 @@ export default {
     data() {
         return {
             value5: 5,            
+        }
+    },
+    props: {
+        title: {
+            type: String
         }
     }
 }

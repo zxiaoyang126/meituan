@@ -3,7 +3,7 @@
     <div class="first-letter-item" :id="'city-' + title">
         <span class="title">{{title}}</span>
         <span class="city">
-            <a href="#" v-for="item in data" :key="item">{{item}}</a> 
+            <a v-for="item in data" :key="item" @click.prevent="changeCity(item)">{{item}}</a> 
         </span>
     </div>
     
@@ -20,6 +20,9 @@ export default {
         data: {    
             default: () => [],        
             type: Array
+        },
+        changeCity: {
+            type: Function
         }
     }
     
@@ -30,7 +33,8 @@ export default {
 <style lang="stylus" scoped>
     $hover-color = #31BBAC
 
-
+    a 
+        cursor pointer
     .first-letter-item
         background #fff
         border-radius 8px

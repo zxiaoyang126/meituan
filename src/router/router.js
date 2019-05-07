@@ -34,7 +34,7 @@ export default new VueRouter({
         },
        
         {
-            path: '/s',
+            path: '/s/:keyword?',
             component: Search
         },
         {

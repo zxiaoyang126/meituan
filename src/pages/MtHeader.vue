@@ -4,12 +4,12 @@
         <div class="header-bar">
             <div class="bar-content clearfix">
                 <div class="bar-left">
-                    <i class="el-icon-location"></i><span class="">上海</span>
+                    <i class="el-icon-location"></i><span class="">{{curCity}}</span>
                     <router-link class="change-city" :to="{name: 'changecity'}">切换城市</router-link>
                     <span class="near-city">[ <a href="#">彰化</a> <a href="#">宜兰</a> <a href="#">太仓</a> ]</span>
 
                     <router-link to="/login" class="login">立即登陆</router-link>
-                    <a href="#">注册</a>
+                    <router-link to="/register">注册</router-link>
                 </div>
                 <div class="bar-right">
                     <ul class="clearfix">
@@ -106,34 +106,28 @@
             <div class="search">
                 <div class="search-input">
                     <input type="text" placeholder="搜索商家或地点" v-model="keyword" @focus="focus" @blur="blur">
-                    <button class="search-btn"><i class="el-icon-search"></i></button>
+                    <button class="search-btn" @click="submit"><i class="el-icon-search"></i></button>
                 </div>
 
                 <div class="search-list" v-if="isShowSearch">
 
                     <dl v-if="isShowHotSearch">
-                        <dt>热门搜索</dt>
-                        <dd><a href="#">上海迪士尼度假区</a></dd>
-                        <dd><a href="#">东方明珠广播电视塔</a></dd>
-                        <dd><a href="#">上海外滩星空错觉艺术馆</a></dd>
+                        <dt>热门搜索</dt>                        
+                        <dd v-for="key in hotSearchList.slice(0, 3)" 
+                            :key="key"
+                            @click.stop="submit(key)">{{key}}</dd>
                     </dl>
 
                     <ul v-else>
-                        <li>从服务器获取数据</li>
-                        <li>从服务器获取数据</li>
-                        <li>从服务器获取数据</li>
-                        <li>从服务器获取数据</li>
-                        <li>从服务器获取数据</li>
+                        <li v-for="i in 6" :key="i" @click.stop="submit">{{keyword}}</li>                        
                     </ul>
 
                 </div>
 
                 <div class="search-hot">
-                    <a href="#">上海迪士尼度假区</a>
-                    <a href="#">东方明珠广播电视塔</a>
-                    <a href="#">上海外滩星空错觉艺术馆</a>
-                    <a href="#">上海欢乐谷</a>
-                    <a href="#">上海野生动物园</a>
+                    <a v-for="key in hotSearchList" 
+                        :key="key"
+                        @click.prevent="submit(key)">{{key}}</a>                   
                 </div>
             </div>
 
@@ -147,25 +141,52 @@
 
 
 <script>
+
+import { mapState } from 'vuex'
+
+
 export default {
     data() {
         return {
             keyword: '',
-            isShowSearch: false
+            isShowSearch: false,
+            hotSearchList: ['上海迪士尼度假区', '东方明珠广播电视塔',
+                '上海外滩星空错觉艺术馆', '上海欢乐谷', '上海野生动物园'
+            ]
+        }
+    },
+    mounted() {
+        if(this.$route.params.keyword) {
+            this.keyword = this.$route.params.keyword;
         }
     },
     methods: {
         focus() {
-            this.isShowSearch = true;            
+            this.isShowSearch = true;
         },
         blur() {
-            this.isShowSearch = false;
+            setTimeout(() => {
+                this.isShowSearch = false;
+            },200)
+        },
+        submit(key) {
+            if(typeof key === 'string') {
+                this.keyword = key;
+            }
+            if(!this.keyword) return;
+            
+            this.$router.push('/s/' + this.keyword);
+
         }
     },
     computed: {        
         isShowHotSearch() {
             return this.isShowSearch && !this.keyword ? true : false;
-        }
+        },
+        ...mapState({
+            curCity: state => state.curCity,
+        })
+        
     },
     created() {
 
@@ -370,23 +391,26 @@ export default {
                             color #999
                             line-height 30px
                         dd 
-                            color #666
+                            color #999
                             display inline-block
                             line-height 25px
-                            a
-                                color #999 
-                                &:hover
-                                    color $hover-color
+                            margin-right 5px
+                            cursor pointer                           
+                            &:hover
+                                color $hover-color
                     li 
-                        padding 5px 8px                                                
+                        padding 5px 8px
+                        cursor pointer                                                
                         &:hover
                             background #f8f8f8
+                            color $hover-color
                 .search-hot                    
                     line-height 35px
                     height 35px                    
                     padding-left 10px
                     a
                         color #999
+                        margin-right 5px
                         &:hover 
                             color $hover-color
 

@@ -1,46 +1,50 @@
 <template>
-    <div class="search-body">
 
-        <div class="now-location">
-            <a href="#">上海美团</a>
-            <a href="#">上海上海迪士尼度假区</a>
-        </div>
-        <div class="search-content">
-            <div class="content-main">
-                <div class="main-category-wrap">
-                    <search-main-category />
-                </div>
+    <div class="container">
+        <mt-header />
+        <div class="search-body">
 
-                <div class="main-list">
-                    <div class="main-order">
-                        <a href="" class="active">智能排序</a>
-                        <a href="">价格排序</a>
-                        <a href="">人气最高</a>
-                        <a href="">评价最高</a>
-                    </div>
-
-                    <div class="main-item-wrap">
-                        <search-main-item />
-                        <search-main-item />
-                    </div>
-                </div>
+            <div class="now-location">
+                <a href="#">上海美团</a>
+                <a href="#">{{$route.params.keyword}}</a>
             </div>
+            <div class="search-content">
+                <div class="content-main">
+                    <div class="main-category-wrap">
+                        <search-main-category />
+                    </div>
+
+                    <div class="main-list">
+                        <div class="main-order">
+                            <a href="" class="active">智能排序</a>
+                            <a href="">价格排序</a>
+                            <a href="">人气最高</a>
+                            <a href="">评价最高</a>
+                        </div>
+
+                        <div class="main-item-wrap">
+                            <search-main-item v-for="n in 10" :key="n" :title="$route.params.keyword" />
+                           
+                        </div>
+                    </div>
+                </div>
 
 
-            <div class="content-right">111</div>
+                <div class="content-right">111</div>
+            </div>
         </div>
-        
-
     </div>
 </template>
 
 
 <script>
+import MtHeader from './MtHeader'
 import SearchMainItem from '../components/SearchMainItem'
 import SearchMainCategory from '../components/SearchMainCategory'
 export default {
 
     components: {
+        MtHeader,
         SearchMainItem,
         SearchMainCategory
     }
