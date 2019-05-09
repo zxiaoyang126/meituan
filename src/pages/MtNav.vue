@@ -63,11 +63,12 @@ export default {
 <style lang="stylus" scoped>
 
     .nav-wrap
-        width 100%
+        width 1190px
         border 1px solid #d8d8d8
         border-radius 5px      
         box-sizing border-box
         background-color #fff
+        margin 0 auto
         .nav-title
             width 100%
             height 44px

@@ -8,7 +8,7 @@
                 <a href="#">上海美团</a>
                 <a href="#">{{$route.params.keyword}}</a>
             </div>
-            <div class="search-content">
+            <div class="search-content clearfix">
                 <div class="content-main">
                     <div class="main-category-wrap">
                         <search-main-category />
@@ -24,29 +24,144 @@
 
                         <div class="main-item-wrap">
                             <search-main-item v-for="n in 10" :key="n" :title="$route.params.keyword" />
-                           
                         </div>
                     </div>
                 </div>
 
+                <!-- 右侧推荐 -->
+                <div class="content-right">
+                    <h1>猜你喜欢</h1>
+                    <div class="recommend-group">
 
-                <div class="content-right">111</div>
+                        <a class="rec-group-item">
+                            <img src="https://p1.meituan.net/msmerchant/1925d8c5cd245283ac488c2c1f31435311099.jpg@190w_106h_1e_1c" alt="">
+                            <p class="seller-name">牛人自助纸上烤肉免费火锅（大柏树店）</p>
+                            <p class="rate">
+                                <el-rate
+                                    disabled
+                                    text-color="#ff9900"
+                                    v-model="rate">
+                                </el-rate>
+                                <span>1887个评价</span>
+                            </p>
+                            <p class="address">五角场/大学区停车场</p>
+                            <p class="price">￥<span>35.8</span>起</p>
+                        </a>
+
+                        <a class="rec-group-item">
+                            <img src="https://p1.meituan.net/mogu/18c5e76a1bb79d5f4c460da90131a9a4412226.jpg@190w_106h_1e_1c" alt="">
+                            <p class="seller-name">炭香园自助烧烤（人民北路店）</p>
+                            <p class="rate">
+                                <el-rate
+                                    disabled
+                                    text-color="#ff9900"
+                                    v-model="rate">
+                                </el-rate>
+                                <span>1887个评价</span>
+                            </p>
+                            <p class="address">五角场/大学区停车场</p>
+                            <p class="price">￥<span>58.0</span>起</p>
+                        </a>
+
+
+                        <a class="rec-group-item">
+                            <img src="https://p1.meituan.net/bbia/01fa8981759bf069e150bee05c43fe3159913.jpg@190w_106h_1e_1c" alt="">
+                            <p class="seller-name">华莱士（朱家角店）</p>
+                            <p class="rate">
+                                <el-rate
+                                    disabled
+                                    text-color="#ff9900"
+                                    v-model="rate">
+                                </el-rate>
+                                <span>621个评价</span>
+                            </p>
+                            <p class="address">朱家角/东方绿舟</p>
+                            <p class="price">￥<span>3.5</span>起</p>
+                        </a>
+
+                        <a class="rec-group-item">
+                            <img src="https://p1.meituan.net/msmerchant/1925d8c5cd245283ac488c2c1f31435311099.jpg@190w_106h_1e_1c" alt="">
+                            <p class="seller-name">牛人自助纸上烤肉免费火锅（大柏树店）</p>
+                            <p class="rate">
+                                <el-rate
+                                    disabled
+                                    text-color="#ff9900"
+                                    v-model="rate">
+                                </el-rate>
+                                <span>1887个评价</span>
+                            </p>
+                            <p class="address">五角场/大学区停车场</p>
+                            <p class="price">￥<span>35.8</span>起</p>
+                        </a>
+
+                        <a class="rec-group-item">
+                            <img src="https://p1.meituan.net/mogu/18c5e76a1bb79d5f4c460da90131a9a4412226.jpg@190w_106h_1e_1c" alt="">
+                            <p class="seller-name">炭香园自助烧烤（人民北路店）</p>
+                            <p class="rate">
+                                <el-rate
+                                    disabled
+                                    text-color="#ff9900"
+                                    v-model="rate">
+                                </el-rate>
+                                <span>1887个评价</span>
+                            </p>
+                            <p class="address">五角场/大学区停车场</p>
+                            <p class="price">￥<span>58.0</span>起</p>
+                        </a>
+
+
+                        <a class="rec-group-item">
+                            <img src="https://p1.meituan.net/bbia/01fa8981759bf069e150bee05c43fe3159913.jpg@190w_106h_1e_1c" alt="">
+                            <p class="seller-name">华莱士（朱家角店）</p>
+                            <p class="rate">
+                                <el-rate
+                                    disabled
+                                    text-color="#ff9900"
+                                    v-model="rate">
+                                </el-rate>
+                                <span>621个评价</span>
+                            </p>
+                            <p class="address">朱家角/东方绿舟</p>
+                            <p class="price">￥<span>3.5</span>起</p>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
         </div>
+
+        <mt-nav />
+
+        <mt-bottom />
+
+        <mt-footer />
+
+
     </div>
 </template>
 
 
 <script>
 import MtHeader from './MtHeader'
+import MtBottom from './MtBottom'
+import MtFooter from './MtFooter'
+import MtNav from './MtNav'
 import SearchMainItem from '../components/SearchMainItem'
 import SearchMainCategory from '../components/SearchMainCategory'
 export default {
+    data() {
+        return {
+            rate: 5
+        }
+    },
 
     components: {
         MtHeader,
         SearchMainItem,
-        SearchMainCategory
+        SearchMainCategory,
+        MtNav,
+        MtBottom,
+        MtFooter
     }
     
 }
@@ -130,7 +245,48 @@ export default {
             .content-right
                 width 230px
                 float right
-                background #333
+                border: 1px solid #e5e5e5
+                border-radius: 4px
+                background: #fff
+                padding: 15px 20px
+                box-sizing border-box
+                margin-top 10px
+                h1 
+                    font-size 16px
+                .recommend-group
+                    padding-top 15px
+                    .rec-group-item
+                        display block
+                        margin-bottom 15px
+                        img 
+                            width 100%
+                            border-radius 4px                        
+                        .seller-name 
+                            font-size 14px     
+                            margin 5px 0     
+                        .rate 
+                            .el-rate
+                                display inline-block
+                                .el-rate__item
+                                    .el-rate__icon
+                                        font-size 14px!important
+                                .el-icon-star-on
+                                    font-size 14px!important
+                            span 
+                                color #bbb
+                                font-size 13px   
+                        .address 
+                            font-size 13px
+                            color #999
+                            margin 5px 0     
+                        .price 
+                            color #f60
+                            font-size 16px
+                            span    
+                                font-size 24px   
+                                margin 0 3px     
+
+
 
 
 

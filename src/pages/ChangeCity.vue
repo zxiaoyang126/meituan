@@ -351,19 +351,6 @@ export default {
     a {
         cursor: pointer
     }
-    .clearfix::before
-        content ""
-        height 0px
-        display block
-        visibility hidden
-        clear both
-    .clearfix::after
-        content ""
-        height 0px
-        display block
-        visibility hidden
-        clear both
-
     .changecity-wrap 
         width 1190px
         margin 0 auto

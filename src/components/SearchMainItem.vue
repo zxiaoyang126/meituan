@@ -10,12 +10,13 @@
                 <p>
                     <el-rate
                         v-model="value5"
-                        disabled
-                        text-color="#ff9900">
+                        disabled                        
+                        text-color="#ff9900"
+                        disabled-void-color="#bbbbbb">
                     </el-rate>
 
                     <span>很好</span>
-                    <span>4.8分</span>
+                    <span>4.0分</span>
                     <span class="comment-count">132628人评论</span>
                 </p>
 
@@ -38,7 +39,7 @@
 export default {
     data() {
         return {
-            value5: 5,            
+            value5: 4,            
         }
     },
     props: {
@@ -53,8 +54,6 @@ export default {
 <style lang="stylus" scoped>
     .el-rate
         display inline-block
-    .el-icon-star-on
-        font-size 12px!important
     .main-item
         padding 15px 0px
         border-top 1px solid #e5e5e5

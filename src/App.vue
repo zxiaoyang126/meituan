@@ -32,19 +32,11 @@ export default {
   }
 
   .clearfix::after {
-    content: " ";
+    content: "";
     display: block;
     height: 0;
     visibility: hidden;
     clear: both;
   }
-      
-  .clearfix::before {
-    content: " ";
-    display: block;
-    height: 0;
-    visibility: hidden;
-    clear: both;
-  }    
   
 </style>
